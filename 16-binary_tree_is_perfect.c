@@ -8,20 +8,14 @@
 
 int binary_tree_is_perfect(const binary_tree_t *tree)
 {
-	int l_height, r_height, l_path, r_path;
+	int l_path, r_path;
 
 	if (tree == NULL)
 		return (0);
 
-	l_height = binary_tree_height(tree->left);
-	r_height = binary_tree_height(tree->right);
+	l_path = binary_tree_is_perfect(tree->left);
+	r_path = binary_tree_is_perfect(tree->right);
 
-	if (l_height == r_height)
-	{
-		l_path = binary_tree_is_perfect(tree->left);
-		r_path = binary_tree_is_perfect(tree->right);
-		return (l_path && r_path);
-	}
-
-	return (0);
+	return ((tree->left != NULL && tree->right != NULL) &&
+			(tree->left == NULL && tree->right == NULL && l_path == r_path));
 }
