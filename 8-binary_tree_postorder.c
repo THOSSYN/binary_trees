@@ -4,7 +4,7 @@
  * binary_tree_postorder - goes through a binary tree using
  * post-order traversal
  * @tree: is pointer to the root node
- * @(*func)(int): is pointer to function to call for print
+ * @func: is pointer to function to call for print
  * Return: nothing
  */
 

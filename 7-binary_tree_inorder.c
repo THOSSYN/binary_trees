@@ -4,7 +4,7 @@
  * binary_tree_inorder - goes through a binary tree
  * using in-order traversal
  * @tree: is the pointer to the root node
- * @(*func)(int): is the pointer to the function to call
+ * @func: is the pointer to the function to call
  * for each node
  * Return: nothing
  */
