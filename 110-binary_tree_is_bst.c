@@ -11,15 +11,24 @@ int binary_tree_is_bst(const binary_tree_t *tree)
 	if (tree == NULL)
 		return (0);
 
-	/*we check for bst rule violation*/
-	if (tree->left != NULL && tree->left->n >= tree->n)
-		return (0);
-	if (tree->right != NULL && tree->right->n <= tree->n)
+	return (binary_search_bst(tree, 0, 1000));
+}
+
+/**
+ * binary_search_bst - helps determine the validity of a bst in tree
+ * @tree: is pointer to root node
+ * @min: is the min value that the left tree can have
+ * @max: is the maximum value the right tree can have
+ * Return: 1 or 0
+ */
+int binary_search_bst(const binary_tree_t *tree, int min, int max)
+{
+	if (tree == NULL)
+		return (1);
+
+	if (tree->n <= min || tree->n >= max)
 		return (0);
 
-	/*we traverse to check if all node satisfy bst rules*/
-	int is_bst_left = binary_tree_is_bst(tree->left);
-	int is_bst_right = binary_tree_is_bst(tree->right);
-
-	return (is_bst_left && is_bst_right);
+	return (binary_search_bst(tree->left, min, tree->n) &&
+			binary_search_bst(tree->right, tree->n, max));
 }
