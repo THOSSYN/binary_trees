@@ -25,6 +25,30 @@ typedef struct binary_tree_s bst_t;
 typedef struct binary_tree_s avl_t;
 typedef struct binary_tree_s heap_t;
 
+/**
+ * struct QueueNode - is the pointer to the data structure
+ * @data: is the value
+ * @next: is pointer to next node
+ */
+
+typedef struct QueueNode
+{
+	int data;
+	struct QueueNode *next;
+} QueueNode;
+
+/**
+ * struct Queue - is the queue data structure
+ * @front: is the front of the queue
+ * @rear: is the back of the queue
+ */
+
+typedef struct Queue
+{
+	QueueNode *front;
+	QueueNode *rear;
+} Queue;
+
 void binary_tree_print(const binary_tree_t *tree);
 binary_tree_t *binary_tree_node(binary_tree_t *parent, int value);
 binary_tree_t *binary_tree_insert_left(binary_tree_t *parent, int value);
@@ -47,6 +71,13 @@ binary_tree_t *binary_tree_sibling(binary_tree_t *node);
 binary_tree_t *binary_tree_uncle(binary_tree_t *node);
 binary_tree_t *binary_trees_ancestor(const binary_tree_t *first,
 		const binary_tree_t *second);
+
+Queue *createQueue(void);
+void enqueue(Queue *queue, int data);
+int dequeue(Queue *queue);
+int isEmpty(Queue *queue);
+void freeQueue(Queue *queue);
+
 void binary_tree_levelorder(const binary_tree_t *tree, void (*func)(int));
 int binary_tree_is_complete(const binary_tree_t *tree);
 binary_tree_t *binary_tree_rotate_left(binary_tree_t *tree);
