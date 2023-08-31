@@ -17,6 +17,11 @@ int binary_tree_is_avl(const binary_tree_t *tree)
 	return (balance_tree_height_avl(tree) != -1);
 }
 
+/**
+ * balance_tree_height_avl - checks the height balance of subtrees
+ * @tree: is pointer to the root node
+ * Return: the -1 if tree is not balance
+ */
 int balance_tree_height_avl(const binary_tree_t *tree)
 {
 	int left_tree_hght, right_tree_hght;
@@ -38,6 +43,12 @@ int balance_tree_height_avl(const binary_tree_t *tree)
 	return (max(left_tree_hght, right_tree_hght) + 1);
 }
 
+/**
+ * max - calculate the maximum value between two values
+ * @a: is the first value
+ * @b: is the second value
+ * Return: the max value
+ */
 int max(int a, int b)
 {
 	return ((a > b) ? a : b);
